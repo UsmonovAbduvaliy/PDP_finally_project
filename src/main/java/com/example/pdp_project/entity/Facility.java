@@ -9,21 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trip {
+public class Facility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private String title;
-    private String description;
-
-    private String country;
-    private Double rating;
-    private Double price;
-
+    private String name;
     @ManyToOne
-    private Category category;
-    @OneToOne
-    private Attachment photo;
+    private Attachment attachment;
 }
-

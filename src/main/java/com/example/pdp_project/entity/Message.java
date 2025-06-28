@@ -2,6 +2,7 @@ package com.example.pdp_project.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Message {
 
     @Id
@@ -25,12 +27,6 @@ public class Message {
     private User to;
 
     private String text;
-
-    private String audioUrl;
-
-    private String fileUrl;
-
-    private String fileName;
 
     @CreationTimestamp
     private LocalDateTime sentAt;
