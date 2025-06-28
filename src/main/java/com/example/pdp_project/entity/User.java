@@ -19,6 +19,8 @@ public class User {
     String verificationCode;
     String name;
     Boolean isOnline;
+    Boolean isActive;
+    Boolean isVerified;
     @OneToOne
     Attachment photo;
 }
