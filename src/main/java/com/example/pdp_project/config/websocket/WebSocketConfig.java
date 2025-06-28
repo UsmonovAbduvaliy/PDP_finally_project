@@ -1,4 +1,4 @@
-package com.example.pdp_project.config;
+package com.example.pdp_project.config.websocket;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
