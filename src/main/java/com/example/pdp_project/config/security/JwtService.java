@@ -21,6 +21,8 @@ import static com.example.pdp_project.utils.Const.TOKEN_PREFIX;
 public class JwtService {
     private final UserRepository userRepository;
 
+    private static final String SECRET = "fdjskf8w7e4r8werfjdsfl9a8sdf8wer89f8sdf8wer9dsf89w8";
+
     public String generateToken(User user) {
         return TOKEN_PREFIX + Jwts.builder()
                 .setSubject(user.getEmail())
@@ -62,7 +64,7 @@ public class JwtService {
     }
 
     public SecretKey getSecretKey() {
-        return Keys.hmacShaKeyFor("qwertyasdfgftxcvbnqwertyasdfghjk".getBytes());
+        return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
     /*
@@ -81,8 +83,8 @@ public class JwtService {
                 .getPayload();
 
         String email = claims.getSubject();
-        String roles = (String) claims.get("roles");
-        Long id = claims.get("id", Long.class); // ID ni olish
+//        String roles = (String) claims.get("roles");
+        Long id = claims.get("id", Long.class);
         Boolean active = claims.get("active", Boolean.class); // Active ni olish
 //        List<Role> authorities = Arrays.stream(roles.split(",")).map(Role::new).toList();
         return User.builder()

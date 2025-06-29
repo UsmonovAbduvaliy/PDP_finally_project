@@ -1,14 +1,17 @@
 package com.example.pdp_project.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
+@MappedSuperclass
+
 public class Attachment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -26,7 +26,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        Optional<User> byEmail = userRepository.findByEmail(loginRequest.getEmail());
+        Optional<User> byEmail = Optional.ofNullable(userRepository.findByEmail(loginRequest.getEmail()));
         if (byEmail.isPresent()) {
             if (!byEmail.get().getPassword().equals(loginRequest.getPassword())) {
                 return ResponseEntity.status(401).build();
@@ -46,8 +46,8 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest, @RequestParam MultipartFile image) {
-        Optional<User> byEmail = userRepository.findByEmail(registerRequest.getEmail());
+    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest, @RequestParam(value = "photo", required = false) MultipartFile image) {
+        Optional<User> byEmail = Optional.ofNullable(userRepository.findByEmail(registerRequest.getEmail()));
 
         User user;
         user = byEmail.orElseGet(User::new);

@@ -1,24 +1,25 @@
 package com.example.pdp_project.entity;
 
+import com.example.pdp_project.entity.base.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCard {
+@SuperBuilder
+@MappedSuperclass
+public class UserCard extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
     String cardNumber;
     String cardName;
     Integer expiryMonth;
     Integer expiryYear;
     String CVC;
+
     @ManyToOne
     User user;
 

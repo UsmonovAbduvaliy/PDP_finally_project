@@ -1,22 +1,22 @@
 package com.example.pdp_project.entity;
 
+import com.example.pdp_project.entity.base.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
-public class Message {
+@NoArgsConstructor
+@SuperBuilder
+@MappedSuperclass
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Message extends BaseEntity {
 
     @ManyToOne
     private User from;

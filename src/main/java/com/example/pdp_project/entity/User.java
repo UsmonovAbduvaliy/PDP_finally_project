@@ -1,8 +1,9 @@
 package com.example.pdp_project.entity;
 
+import com.example.pdp_project.entity.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.Role;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,11 +15,12 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class User implements UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+@SuperBuilder
+@MappedSuperclass
+
+@Table(name = "users")
+public class User extends BaseEntity implements UserDetails {
+
     String email;
     String password;
     String phone;
@@ -27,13 +29,17 @@ public class User implements UserDetails {
     Boolean isOnline;
     Boolean isActive;
     Boolean isVerified;
+
     @OneToOne
     Attachment photo;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return roles;
     }
 
     @Override
