@@ -1,10 +1,10 @@
 package com.example.pdp_project.controller;
 
+import com.example.pdp_project.config.security.JwtService;
 import com.example.pdp_project.dto.request.LoginRequest;
 import com.example.pdp_project.dto.request.RegisterRequest;
 import com.example.pdp_project.entity.User;
 import com.example.pdp_project.repo.UserRepository;
-import com.example.pdp_project.service.JwtService;
 import com.example.pdp_project.service.SendMailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
