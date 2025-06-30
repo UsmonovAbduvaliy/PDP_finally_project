@@ -18,7 +18,7 @@ public class MessageService {
     private final UserRepository userRepository;
 
     public List<Message> chat(Integer user1, Integer user2){
-        return messageRepository.findByFromIdAndToIdOrToIdAndFromIdOrderBySentAtAsc(user1, user2, user1, user2);
+        return messageRepository.getChatMessages(user1, user2);
     }
 
     public Message send(MessageDto dto){
