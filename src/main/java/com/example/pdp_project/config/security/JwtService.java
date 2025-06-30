@@ -1,5 +1,6 @@
 package com.example.pdp_project.config.security;
 
+import com.example.pdp_project.entity.Role;
 import com.example.pdp_project.entity.User;
 import com.example.pdp_project.repo.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -11,7 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.example.pdp_project.utils.Const.TOKEN_PREFIX;
 
@@ -21,13 +25,15 @@ import static com.example.pdp_project.utils.Const.TOKEN_PREFIX;
 public class JwtService {
     private final UserRepository userRepository;
 
+    private static final String SECRET = "fdjskf8w7e4r8werfjdsfl9a8sdf8wer89f8sdf8wer9dsf89w8";
+
     public String generateToken(User user) {
         return TOKEN_PREFIX + Jwts.builder()
                 .setSubject(user.getEmail())
                 .claim("email", user.getEmail())
                 .claim("id", user.getId())
                 .claim("active", user.getIsActive())
-//              .claim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.joining(", ")))
+                .claim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.joining(", ")))
                 .issuedAt(new Date())
                 .expiration(new Date(new Date().getTime() + 1000 * 60 * 60 * 24))
                 .signWith(getSecretKey())
@@ -39,8 +45,8 @@ public class JwtService {
                 .setSubject(user.getEmail())
                 .claim("email", user.getEmail())
                 .claim("id", user.getId())
-                .claim("active", user.getIsActive()) // Active holatini qo'shish
-//                .claim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.joining(", ")))
+                .claim("active", user.getIsActive())
+                .claim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.joining(", ")))
                 .issuedAt(new Date())
                 .expiration(new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 2))
                 .signWith(getSecretKey())
@@ -62,7 +68,7 @@ public class JwtService {
     }
 
     public SecretKey getSecretKey() {
-        return Keys.hmacShaKeyFor("qwertyasdfgftxcvbnqwertyasdfghjk".getBytes());
+        return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
     /*
@@ -82,13 +88,13 @@ public class JwtService {
 
         String email = claims.getSubject();
         String roles = (String) claims.get("roles");
-        Long id = claims.get("id", Long.class); // ID ni olish
+        Long id = claims.get("id", Long.class);
         Boolean active = claims.get("active", Boolean.class); // Active ni olish
-//        List<Role> authorities = Arrays.stream(roles.split(",")).map(Role::new).toList();
+        List<Role> authorities = Arrays.stream(roles.split(",")).map(Role::new).toList();
         return User.builder()
                 .id(id)
                 .email(email)
-//                .roles(authorities)
+                .roles(authorities)
                 .isActive(active)
                 .build();
     }
