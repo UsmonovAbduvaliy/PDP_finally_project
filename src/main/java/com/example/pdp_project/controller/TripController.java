@@ -17,7 +17,7 @@ public class TripController {
         return ResponseEntity.ok(service.popularTrips());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?> byId(@PathVariable Integer id){
+    public ResponseEntity<?> byId(@PathVariable Long id){
         return ResponseEntity.ok(service.getOneTrip(id));
     }
 }

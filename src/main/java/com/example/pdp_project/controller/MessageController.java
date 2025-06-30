@@ -15,8 +15,8 @@ public class MessageController {
 
     @GetMapping("/{user1}/{user2}")
     public ResponseEntity<?> chat(
-            @PathVariable Integer user1,
-            @PathVariable Integer user2){
+            @PathVariable Long user1,
+            @PathVariable Long user2){
         return ResponseEntity.ok(messageService.chat(user1, user2));
     }
 

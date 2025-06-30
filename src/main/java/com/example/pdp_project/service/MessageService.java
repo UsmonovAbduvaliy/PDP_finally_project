@@ -17,7 +17,7 @@ public class MessageService {
     private final MessageRepository messageRepository;
     private final UserRepository userRepository;
 
-    public List<Message> chat(Integer user1, Integer user2){
+    public List<Message> chat(Long user1, Long user2){
         return messageRepository.getChatMessages(user1, user2);
     }
 

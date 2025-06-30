@@ -14,5 +14,5 @@ public class TripService {
     public List<Trip> popularTrips() {
         return repo.findTop8ByOrderByRatingDesc();
     }
-    public Trip getOneTrip(Integer id){return repo.findById(id).orElseThrow();}
+    public Trip getOneTrip(Long id){return repo.findById(id).orElseThrow();}
 }
