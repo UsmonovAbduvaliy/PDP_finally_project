@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class HotelController {
     private final HotelService service;
     @PostMapping("/search")
-    public ResponseEntity<?> search(@Valid @RequestBody HotelSearchCriteria c){
+    public ResponseEntity<?> search(@RequestBody HotelSearchCriteria c){
         return ResponseEntity.ok(service.search(c));
     }
     @GetMapping("/{id}")

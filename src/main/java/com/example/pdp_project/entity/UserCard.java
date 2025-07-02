@@ -11,7 +11,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@MappedSuperclass
 public class UserCard extends BaseEntity {
 
     String cardNumber;

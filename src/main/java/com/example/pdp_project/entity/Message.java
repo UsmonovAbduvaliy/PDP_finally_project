@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@MappedSuperclass
 
 public class Message extends BaseEntity {
 

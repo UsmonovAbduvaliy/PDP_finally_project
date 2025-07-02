@@ -11,7 +11,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@MappedSuperclass
 
 public class Location extends BaseEntity {
 

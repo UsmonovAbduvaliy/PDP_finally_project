@@ -10,11 +10,10 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@MappedSuperclass
 
 public class Attachment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    byte[] content;
+    private Integer id;
+    private byte[] content;
 }

@@ -1,20 +1,18 @@
 package com.example.pdp_project.entity;
 
+import com.example.pdp_project.entity.base.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hotel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Hotel extends BaseEntity {
+
     private String name;
     private String city;
     private Double pricePerNight;

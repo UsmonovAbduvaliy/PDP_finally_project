@@ -2,7 +2,6 @@ package com.example.pdp_project.entity;
 
 import com.example.pdp_project.entity.base.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,10 +16,10 @@ import org.springframework.security.core.GrantedAuthority;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@MappedSuperclass
 
 @Table(name = "roles")
 public class Role extends BaseEntity implements GrantedAuthority {
+
     private String name;
 
 
