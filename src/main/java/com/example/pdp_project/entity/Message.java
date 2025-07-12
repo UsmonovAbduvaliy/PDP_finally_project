@@ -7,6 +7,8 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,11 +27,8 @@ public class Message extends BaseEntity {
 
     private String text;
 
-    private String audioUrl;
-
-    private String fileUrl;
-
-    private String fileName;
+    @OneToMany(fetch = FetchType.EAGER)
+    List<UserFile> files = new ArrayList<>();
 
     @CreationTimestamp
     private LocalDateTime sentAt;
