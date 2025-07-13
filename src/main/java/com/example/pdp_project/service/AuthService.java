@@ -47,7 +47,7 @@ public class AuthService {
         return userRepository.save(user);
     }
 
-    public User chackVerificationCode(Integer id, String code) {
+    public User chackVerificationCode(Long id, String code) {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
             User user = byId.get();

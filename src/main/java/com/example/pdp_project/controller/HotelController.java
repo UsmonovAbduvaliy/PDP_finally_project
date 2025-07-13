@@ -2,7 +2,6 @@ package com.example.pdp_project.controller;
 
 import com.example.pdp_project.dto.request.HotelSearchCriteria;
 import com.example.pdp_project.service.HotelService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,7 @@ public class HotelController {
         return ResponseEntity.ok(service.search(c));
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?> byId(@PathVariable Integer id){
+    public ResponseEntity<?> byId(@PathVariable Long id){
         return ResponseEntity.ok(service.get(id));
     }
 }

@@ -12,8 +12,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HotelService {
     private final HotelRepository repo;
-    public List<Hotel> search(HotelSearchCriteria c){
-        return repo.searchByCity(c.city());
+    public List<Hotel> search(HotelSearchCriteria c) {
+        return repo.searchAvailableHotels(
+                c.city(),
+                c.rooms(),
+                c.guests(),
+                c.checkIn(),
+                c.checkOut()
+        );
     }
-    public Hotel get(Integer id){return repo.findById(id).orElseThrow();}
+    public Hotel get(Long id){return repo.findById(id).orElseThrow();}
 }

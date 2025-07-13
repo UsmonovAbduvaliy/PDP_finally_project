@@ -35,7 +35,7 @@ public class AuthController {
     }
 
     @PostMapping("/verify/{id}")
-    public ResponseEntity<?> checkVerificationCode( @PathVariable Integer id,@RequestParam String code) {
+    public ResponseEntity<?> checkVerificationCode( @PathVariable Long id,@RequestParam String code) {
         User user = authService.chackVerificationCode(id, code);
         if(user!=null){
             return ResponseEntity.ok(user);
