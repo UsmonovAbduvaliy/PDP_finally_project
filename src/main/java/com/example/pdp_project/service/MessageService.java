@@ -70,8 +70,7 @@ public class MessageService {
             List<UserFile> savedFiles = userFileRepository.saveAll(userFiles);
             message.setFiles(savedFiles);
         }
-
-        return message;
+        return messageRepository.save(message);
     }
 
     private static UserFile getUserFile(MultipartFile file) throws IOException {

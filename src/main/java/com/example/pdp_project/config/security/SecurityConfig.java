@@ -40,10 +40,9 @@ public class SecurityConfig {
                                 "/v3/api-docs/**"
                         ).permitAll()
                         .requestMatchers(
-                                "/**"
+                                "/api/auth/**"
                         ).permitAll()
-
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
         );
 
         http.addFilterBefore(mySecurityFilter, UsernamePasswordAuthenticationFilter.class);

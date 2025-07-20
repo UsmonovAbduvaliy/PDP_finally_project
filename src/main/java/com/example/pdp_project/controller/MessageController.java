@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -39,9 +40,23 @@ public class MessageController {
         return ResponseEntity.ok(chatDtos);
     }
 
-    @PostMapping(value = "/send", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> send (@RequestBody MessageDto messageDto,@ModelAttribute List<MultipartFile> files){
-        Message send = messageService.send(messageDto,files);
-        return ResponseEntity.ok(send);
+    @PostMapping("/send-text")
+    public ResponseEntity<?> sendTextMessage(@RequestBody MessageDto messageDto) {
+        Message message = messageService.send(messageDto, Collections.emptyList());
+        return ResponseEntity.ok(message);
     }
+
+    @PostMapping(value = "/message/{from}/{to}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> sendFileMessage(
+            @PathVariable Long from,
+            @PathVariable Long to,
+            @RequestPart(value = "files", required = false) List<MultipartFile> files
+    ) {
+        MessageDto dto = new MessageDto(from,to,"");
+
+        Message message = messageService.send(dto, files == null ? Collections.emptyList() : files);
+        return ResponseEntity.ok(message);
+    }
+
+
 }
