@@ -1,13 +1,15 @@
 package com.example.pdp_project.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class SendMailService {
 
-    public JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
     public void sendVerificationCode(String toEmail, String verificationCode) {
         SimpleMailMessage message = new SimpleMailMessage();

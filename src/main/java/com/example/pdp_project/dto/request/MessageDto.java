@@ -5,7 +5,7 @@ import lombok.Value;
 
 @Value
 public class MessageDto {
-    Integer from;
-    Integer to;
+    Long from;
+    Long to;
     String content;
 }
