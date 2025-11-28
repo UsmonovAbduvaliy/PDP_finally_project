@@ -40,7 +40,8 @@ public class SecurityConfig {
                                 "/v3/api-docs/**"
                         ).permitAll()
                         .requestMatchers(
-                                "/api/auth/**"
+                                "/api/auth/**",
+                                "/api/trips/getAll"
                         ).permitAll()
                         .anyRequest().authenticated()
         );

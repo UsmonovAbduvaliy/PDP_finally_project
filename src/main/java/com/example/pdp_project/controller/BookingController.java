@@ -24,7 +24,7 @@ public class BookingController {
             @RequestParam Integer guests,
             @RequestParam Integer rooms
     ) {
-        Booking booking = bookingService.book(hotelId, checkIn, checkOut, guests, rooms);
+        Booking booking = bookingService.book(hotelId, checkIn, checkOut);
         return ResponseEntity.ok(booking);
     }
 }

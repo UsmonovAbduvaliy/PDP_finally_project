@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BotRunner implements CommandLineRunner {
 
-    private final TelegramBot telegramBot = new TelegramBot("7972181719:AAGXKFoV8eUMiC-bhmgP8BDM5jcjxnAjqho");
+    private final TelegramBot telegramBot = new TelegramBot("8214948566:AAFjTm8enotbifrF8mD-5Bb2kS_weOcN-R8");
     private final BotService botService;
 
     @Override

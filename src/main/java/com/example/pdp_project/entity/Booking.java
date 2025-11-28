@@ -22,6 +22,14 @@ public class Booking extends BaseEntity {
     private LocalDate checkIn;
     private LocalDate checkOut;
 
-    private Integer guests;
-    private Integer rooms;
+    @ManyToOne
+    private Trip trip;
+
+    @ManyToOne
+    private TgUser user;
+
+    private int days;
+
+    private LocalDate bookingDate = LocalDate.now();
+
 }

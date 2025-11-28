@@ -15,15 +15,13 @@ public class BookingService {
     private final BookingRepository bookingRepo;
     private final HotelRepository hotelRepo;
 
-    public Booking book(Long hotelId, LocalDate checkIn, LocalDate checkOut, int guests, int rooms) {
+    public Booking book(Long hotelId, LocalDate checkIn, LocalDate checkOut) {
         Hotel hotel = hotelRepo.findById(hotelId).orElseThrow();
 
         Booking booking = new Booking();
         booking.setHotel(hotel);
         booking.setCheckIn(checkIn);
         booking.setCheckOut(checkOut);
-        booking.setGuests(guests);
-        booking.setRooms(rooms);
 
         return bookingRepo.save(booking);
     }

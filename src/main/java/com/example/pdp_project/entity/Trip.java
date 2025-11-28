@@ -1,5 +1,6 @@
 package com.example.pdp_project.entity;
 
+import com.example.pdp_project.dto.request.TripDTO;
 import com.example.pdp_project.entity.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,5 +25,13 @@ public class Trip extends BaseEntity {
     private Category category;
     @OneToOne
     private Attachment photo;
+
+    public Trip(TripDTO tripDTO) {
+        this.title = tripDTO.getTitle();
+        this.description = tripDTO.getDescription();
+        this.country = tripDTO.getCountry();
+        this.rating = tripDTO.getRating();
+        this.price = tripDTO.getPrice();
+    }
 }
 

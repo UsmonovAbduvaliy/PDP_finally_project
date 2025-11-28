@@ -27,11 +27,17 @@ public class TripController {
     private final TripService tripService;
     private final BotService botService;
     private final AttachmentRepository attachmentRepository;
+    private final TripRepository tripRepository;
 
     @GetMapping("/popular")
     public ResponseEntity<?> popular(@RequestParam(defaultValue = "0") int page,
                                      @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(tripService.popularTrips(page, size));
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(tripService.getAll());
     }
 
     @GetMapping("/{id}")
